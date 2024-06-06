@@ -1,0 +1,51 @@
+/******************************************************************************
+Traccia: Si scriva un programma in linguaggio C che, 
+dato un numero reale D immesso da tastiera, calcoli e stampi:
+• l’area del quadrato di lato D, 
+• l’area del cerchio di diametro D, 
+• l’area del triangolo equilatero di lato D
+*******************************************************************************/
+#include <stdio.h>
+#include <math.h>
+
+int main ()
+{
+  
+    double D;
+  
+	// Chiedere all'utente di inserire il valore di D
+	printf ("Inserisci un numero reale D: ");
+  
+    scanf ("%lf", &D);
+  
+ 
+	// Calcolo dell'area del quadrato
+    double area_quadrato = D * D;
+  
+ 
+	// Calcolo dell'area del cerchio (raggio = D/2)
+    double raggio = D / 2;
+  
+    double area_cerchio = M_PI * raggio * raggio;
+  
+ 
+	// Calcolo dell'area del triangolo equilatero
+    double area_triangolo = (sqrt (3) / 4) * D * D;
+  
+ 
+	// Stampa dei risultati
+	printf ("Area del quadrato di lato %.2lf: %.2lf\n", D, area_quadrato);
+  
+    printf ("Area del cerchio di diametro %.2lf: %.2lf\n", D, area_cerchio);
+  
+    printf ("Area del triangolo equilatero di lato %.2lf: %.2lf\n", D,
+		   area_triangolo);
+  
+ 
+    return 0;
+
+}
+
+
+andare nel link per visionare il risultato:
+https://onlinegdb.com/CQm-9UgcK
