@@ -1,9 +1,14 @@
 #include <stdio.h>
-#include <ctype.h>
+#include <stdlib.h>
+#include <ctype.h> // Per tolower()
+
+// Funzione per pulire lo schermo
+void clearScreen() {
+    printf("\033[H\033[J");
+}
 
 // Funzione per mostrare il menu iniziale
 void showMenu() {
-
     printf("Benvenuto a Call of Duty Quiz!\n");
     printf("Scegli un'opzione:\n");
     printf("A) Iniziare una nuova partita\n");
@@ -21,15 +26,30 @@ int askQuestion(const char *question, const char *options[], char correctOption)
     char answer;
     scanf(" %c", &answer);
 
-    // Convertiamo la risposta dell'utente in maiuscolo
-    answer = toupper(answer);
+    // Converte la risposta in minuscolo per il confronto
+    answer = tolower(answer);
+    correctOption = tolower(correctOption);
 
     if (answer == correctOption) {
         printf("Corretto!\n\n");
         return 1;
     } else {
-        printf("Sbagliato. La risposta corretta era %c.\n\n", correctOption);
+        printf("Sbagliato. La risposta corretta era %c.\n\n", toupper(correctOption));
         return 0;
+    }
+}
+
+// Funzione per gestire l'input in modo sicuro
+char getValidatedInput() {
+    char input;
+    while (1) {
+        scanf(" %c", &input);
+        input = tolower(input);
+        if (input == 'a' || input == 'b') {
+            return input;
+        } else {
+            printf("Scelta non valida. Inserisci 'A' o 'B': ");
+        }
     }
 }
 
@@ -52,35 +72,29 @@ int main() {
     const char correctOptions[] = {'B', 'A', 'C'};
 
     while (1) {
+        clearScreen();
         showMenu();
-        scanf(" %c", &choice);
+        choice = getValidatedInput();
 
-        // Convertiamo la scelta dell'utente in maiuscolo
-        choice = toupper(choice);
-
-        if (choice == 'A') {
+        if (choice == 'a') {
             printf("Inserisci il tuo nome: ");
             scanf("%s", name);
 
             score = 0;
             for (int i = 0; i < 3; i++) {
+                clearScreen();
                 score += askQuestion(questions[i], options[i], correctOptions[i]);
             }
 
             printf("Partita terminata! %s, il tuo punteggio è: %d su 3\n", name, score);
             printf("Vuoi giocare di nuovo? (A per una nuova partita, B per uscire): ");
-            scanf(" %c", &choice);
+            choice = getValidatedInput();
 
-            // Convertiamo la scelta dell'utente in maiuscolo
-            choice = toupper(choice);
-
-            if (choice == 'B') {
+            if (choice == 'b') {
                 break;
             }
-        } else if (choice == 'B') {
+        } else if (choice == 'b') {
             break;
-        } else {
-            printf("Scelta non valida. Riprova.\n");
         }
     }
 
