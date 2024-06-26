@@ -1,0 +1,16 @@
+def lunghezze_parole(A):
+    # Creiamo una lista vuota per contenere le lunghezze delle parole
+    B = []
+    
+    # Iteriamo attraverso ogni parola nella lista A
+    for parola in A:
+        # Aggiungiamo la lunghezza della parola alla lista B
+        B.append(len(parola))
+    
+    # Restituiamo la lista delle lunghezze
+    return B
+
+# Esempio di utilizzo
+A = ["ciao", "mondo", "python", "programmazione"]
+B = lunghezze_parole(A)
+print(B)  # Output: [4, 5, 6, 14]
