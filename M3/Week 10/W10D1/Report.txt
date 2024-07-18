@@ -1,0 +1,15 @@
+Con le Google Hacking non ho trovato niente di preoccupante, se non un file di testo che si chiamava Ads.txt ma parlava solo delle pubblicità.
+
+invece con recon, ho trovato diverse email e indirizzi ip, per limitare i rischi che le informazioni vadano in mani sbagliate sarebbe:
+
+Limitazione delle connessioni: 
+Configura la limitazione del tasso per prevenire attacchi di forza bruta.
+
+IP Whitelisting: 
+Per aree di amministrazione, limita l'accesso a specifici indirizzi IP.
+
+Account con privilegi: 
+Riduci al minimo il numero di account con privilegi di amministratore.
+
+Log di accesso e errore: Mantieni e monitora regolarmente i log di accesso e di errore del server.
+IDS/IPS: Implementa sistemi di rilevamento e prevenzione delle intrusioni.
