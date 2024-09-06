@@ -1,0 +1,27 @@
+XSS Reflected:
+
+Il primo tag utilizzato è la "i" che permette di dare come output una scitta in corsivo.
+
+Il secondo da come output un allert o pop up con scritto XSS con questo comando: 
+"<script> alert (‘XSS’)</script>".
+
+Il terzo da come output i cookie dellútente e il comando utilizzato è il seguente:
+"<script>alert(document.cookie)</script>".
+
+Il quarto comando permette di fare uscire il nome del server e il comando è:
+"?name=<script>+++++alert("Server+Name%3A+"+%2B+location.hostname)%3B+<%2Fscript>#".
+
+
+SQL Injection:
+
+Il primo parametro inserito è stato "1" e come output ha dato il primo nome e il primo cognome nella tabella dei dipendenti
+
+Come secondo parametro ho provato con l'apice e mi ha dato errore dicendo che la sintassi era errata e mi ha detto di guardare il manuale che corrisponde con la mia versione del server MYSQL e mi dice che per una corretta sintassi usa un parametro vicino alla linea 1.
+
+Come terzo parametro ho utilizzato l`operatore OR e il comando è il seguente:
+"1' OR '1'='1".
+L’OR tra due operandi di cui uno sempre VERO restituisce sempre VERO. In altre parole, la query sopra chiede al database di selezionare tutte le entry della tabella Dipendenti.
+Con questa tecnica si mira a trasformare la query originale in una condizione sempre VERA o sempre FALSA. E si cerca di capire come il risultato si riflette sull’output della web application.
+
+L`ultimo parametro utilizzato è il seguente:
+"1' UNION SELECT user, password FROM users#" Quest`ultimo ci permette di individuare tutti gli user e le password dei dipendenti.
