@@ -1,0 +1,4 @@
+Cracking
+
+In questo esercizio ho utilizzato John the Ripper per decifrare hash MD5 presenti nel file hashes.txt. Usando la wordlist rockyou.txt, John confronta ogni parola della lista con gli hash nel file. Se trova una corrispondenza, restituisce la password corrispondente. In breve, il comando tenta di crackare gli hash MD5 usando un attacco basato su dizionario.
+
