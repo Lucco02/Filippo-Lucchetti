@@ -1,0 +1,87 @@
+Null session
+
+1. Spiegare brevemente cosa vuol dire Null Session:
+
+Sono delle vulnerabilità storiche delle share di Windows.
+Gli attacchi "null sesion" si possono utilizzare per recuperare dalla macchina target molte informazioni, tra le quali:
+
+Password, Utenti di un sistema, Gruppi di un sistema, Processi in esecuzione, Programmi aperti.
+Di per sé gli attacchi "null session" si basano su una vulnerabilità dell’autenticazione delle share amministrative di Windows, che permettevano ad un attaccante di collegarsi ad una share locale o remote senza autenticazione.
+
+2. Elencare i sistemi che sono vulnerabili a Null Session e se sono ancora in commercio
+
+Ad oggi, sono veramente pochi i sistemi vulnerabili, perlopiù sono sistemi legacy.
+
+Questi sistemi consentivano di stabilire connessioni anonime (le cosiddette "Null Sessions") alle condivisioni di rete. Questo significa che un attaccante poteva connettersi a un sistema vulnerabile senza autenticazione e ottenere informazioni di rete sensibili, come l'elenco degli utenti e dei gruppi, le condivisioni di rete attive, e altro ancora.
+Un esempio di sistemi vulnerabili alle null session sono:
+Windows NT 4.0
+Windows 2000
+Windows XP
+Windows Server 2003
+
+3. Elencare le modalità per mitigare o risolvere questa vulnerabilità
+
+Per mitigare o risolvere la vulnerabilità delle Null Sessions:
+
+Disabilitare l'accesso anonimo nei servizi SMB/NetBIOS tramite le impostazioni di sicurezza locali o criteri di gruppo (Group Policy).
+
+Aggiornare a sistemi operativi moderni (Windows 10, 11, Server 2016 o successivi), dove le Null Sessions sono disabilitate per impostazione predefinita.
+
+Limitare l'accesso SMB solo agli utenti autenticati, rimuovendo le condivisioni pubbliche o anonime.
+
+Applicare patch di sicurezza regolarmente e seguire le best practice per la configurazione della rete.
+
+Monitorare il traffico di rete per identificare tentativi non autorizzati di connessioni anonime.
+
+
+ARP Poisoning:
+
+1. Spiegare brevemente come funziona l’ARP Poisoning:
+
+L'ARP Poisoning (o ARP Spoofing) è un attacco informatico che sfrutta la vulnerabilità del protocollo ARP (Address Resolution Protocol) utilizzato nelle reti locali (LAN) per associare indirizzi IP a indirizzi MAC (Media Access Control).
+
+Intercettazione delle Comunicazioni: 
+L'attaccante invia messaggi ARP falsificati a una rete locale, inducendo i dispositivi (come computer o router) a collegare l'indirizzo IP di un host legittimo all'indirizzo MAC dell'attaccante.
+
+Reindirizzamento del Traffico: 
+Una volta avvelenata la cache ARP dei dispositivi, il traffico destinato all'indirizzo IP della vittima viene inviato all'attaccante. Questo gli permette di intercettare, modificare o bloccare i dati.
+
+Man-in-the-Middle (MITM): 
+L'attacco ARP Poisoning è spesso usato per eseguire attacchi MITM, dove l'attaccante può monitorare e manipolare le comunicazioni tra due dispositivi, rimanendo invisibile.
+
+L'ARP Poisoning sfrutta la mancanza di autenticazione nel protocollo ARP, rendendo possibile l'invio di risposte ARP false senza essere rilevati facilmente.
+
+2. Elencare i sistemi che sono vulnerabili a ARP Poisoning:
+
+Tutti i dispositivi su una LAN: 
+Qualsiasi dispositivo connesso a una rete locale che utilizza il protocollo ARP per risolvere gli indirizzi IP in indirizzi MAC può essere vulnerabile, inclusi computer, server, switch, router, stampanti e dispositivi IoT.
+
+Sistemi Operativi: 
+Tutti i principali sistemi operativi (Windows, macOS, Linux, Android, iOS) possono essere vulnerabili se non sono implementate contromisure specifiche.
+
+Reti non segmentate o non protette: 
+Le reti locali senza segmentazione, protezioni di autenticazione ARP o meccanismi di sicurezza come DHCP Snooping o Dynamic ARP Inspection (DAI) sono particolarmente a rischio.
+
+L'ARP Poisoning è una vulnerabilità intrinseca delle reti Ethernet che non adottano misure di sicurezza avanzate.
+
+3. Elencare le modalità per mitigare, rilevare o annullare questo attacco:
+
+Implementare Dynamic ARP Inspection (DAI): 
+Questa misura sui switch verifica l'autenticità dei messaggi ARP e blocca quelli sospetti.
+
+Abilitare DHCP Snooping: 
+Imposta un database di associazioni IP-MAC, che può essere utilizzato da DAI per validare le risposte ARP.
+
+Utilizzare ARP Statico: 
+Configurare manualmente le associazioni ARP statiche per dispositivi critici, impedendo aggiornamenti ARP non autorizzati.
+
+Segmentare la rete: 
+Usare VLAN per limitare la propagazione dell'attacco all'interno di un segmento ristretto della rete.
+
+Monitorare il traffico di rete: 
+Utilizzare sistemi di rilevamento delle intrusioni (IDS) o strumenti specifici per identificare attività ARP sospette.
+
+Crittografare il traffico: 
+Implementare protocolli sicuri come HTTPS, SSH o VPN per proteggere i dati anche se l'attaccante intercetta il traffico.
+
+Queste misure riducono significativamente il rischio e l'impatto dell'ARP Poisoning in una rete.
